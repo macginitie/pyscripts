@@ -8,15 +8,31 @@ import sys
 csvfile = sys.argv[1]
 df = pd.read_csv(csvfile)
 
+# hacks to deal with missing values
+last_recorded = 0
+
 def diff(data, index):
+    global last_recorded
     if index < 2:
         return 0
-    print(index)
+    subtrahend = 0
+    minuend = 0
     try:
-        return int(data[index]) - int(data[index - 1])
+        subtrahend = int(data[index - 1])
+        last_recorded = subtrahend
     except:
-        print('!', data[index])
+        print('! @{0}=>{1} - {2}'.format(index, data[index], data[index - 1]))
+    try:
+        minuend = int(data[index])
+        last_recorded = minuend
+    except:
+        print('! @{0}=>{1} - {2}'.format(index, data[index], data[index - 1]))
+
+    if minuend < subtrahend or minuend == 0:
         return 0
+    if subtrahend == 0:
+        return minuend - last_recorded
+    return minuend - subtrahend
         
 def smooth(data):
     for idx in range(len(data)- 1):

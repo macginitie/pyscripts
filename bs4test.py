@@ -1,6 +1,7 @@
 import requests
 import bs4
-res = requests.get('https://www.w3.org/testing/')
+res = requests.get('https://en.wikipedia.org/wiki/COVID-19_pandemic#Epidemiology') 
+# https://www.w3.org/testing/')
 try:
   res.raise_for_status()  
   soup = bs4.BeautifulSoup(res.text, 'html.parser')
