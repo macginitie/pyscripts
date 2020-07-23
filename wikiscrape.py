@@ -13,7 +13,9 @@ def get_wikipage():
     try:
         # I think including '#Epidemiology' has no effect here, 
         # but I suppose it doesn't hurt either
-        res = requests.get('https://en.wikipedia.org/wiki/COVID-19_pandemic#Epidemiology') 
+        # res = requests.get('https://en.wikipedia.org/wiki/COVID-19_pandemic#Epidemiology') 
+        # oh no Wikipedia changed! Are they allowed to do that? Outrageous!
+        res = requests.get('https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory')
         res.raise_for_status()  
     except Exception as err:
         print(err)
