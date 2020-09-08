@@ -85,7 +85,7 @@ fig.add_trace(
 fig.update_layout(
     height=800,
     showlegend=True,
-    title_text="COVID-19 daily death counts according to Wikipedia",
+    title_text="daily COVID-19 deaths according to Wikipedia",
 )
 
 fig.show()
