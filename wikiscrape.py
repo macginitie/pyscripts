@@ -22,7 +22,7 @@ def get_wikipage():
 def get_world_count(table):
     th = table.select('th')
     world = str(th[8])
-    return world[-13:-6].replace(',', '')
+    return world[-14:-6].replace(',', '')
        
     
 def get_US_count(table):
