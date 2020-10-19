@@ -40,20 +40,10 @@ def diff(data, index):
     return minuend - subtrahend
     
         
-def smooth(data):
-    for idx in range(len(data)- 1):
-        if data[idx] == 0:
-            # 2DO: make this work for multi-day skips too
-            data[idx] = data[idx+1]/2
-            data[idx+1] /= 2
-            
-
 diff_world = []
 wrld_data = df[' worldwide deaths per Wikipedia']
 for idx in range(len(wrld_data)):
     diff_world.append(diff(wrld_data, idx))
-
-smooth(diff_world)
 
 
 diff_US = []
@@ -61,8 +51,6 @@ us_data = df[' U.S. deaths per Wikipedia']
 for idx in range(len(us_data)):
     diff_US.append(diff(us_data, idx))
     
-smooth(diff_US)    
-
 
 fig = make_subplots(
     rows=1, cols=2,
