@@ -1,15 +1,4 @@
-# yellow journalism word puzzle game helper
-
 import sys
-
-line_len = 5 # words per line of output
-
-
-def three_pointer(letters, word):
-    for letter in letters:
-        if letter not in word:
-            return False
-    return True
 
 
 def find_words(letters):
@@ -33,11 +22,8 @@ def find_words(letters):
                     break
             if couldbe:
                 count += 1
-                if three_pointer(letters, word):
-                    print(word, '(3)', end=', ')
-                else:
-                    print(word, end=', ')
-                if count % line_len == 0:
+                print(word, end=', ')
+                if count % 10 == 0:
                     print()
     print()
     print(count, 'words found')
